@@ -1,5 +1,7 @@
 # SwiftPagination
 
+[![Swift Package CI](https://github.com/blejator90/SwiftPagination/actions/workflows/ci-tests.yml/badge.svg)](https://github.com/blejator90/SwiftPagination/actions/workflows/ci-tests.yml)
+
 ![iOS](https://img.shields.io/badge/iOS-13+-green)
 ![macOS](https://img.shields.io/badge/macOS-10.15+-green)
 ![tvOS](https://img.shields.io/badge/tvOS-13+-green)
