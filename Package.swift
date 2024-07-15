@@ -17,13 +17,19 @@ let package = Package(
             targets: ["SwiftPagination"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-concurrency-extras", from: "1.1.0"),
+    ],
     targets: [
         .target(
             name: "SwiftPagination"
         ),
         .testTarget(
             name: "SwiftPaginationTests",
-            dependencies: ["SwiftPagination"]
+            dependencies: [
+                "SwiftPagination",
+                .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras")
+            ]
         )
     ]
 )
