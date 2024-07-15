@@ -1,5 +1,11 @@
 # SwiftPagination
 
+![iOS](https://img.shields.io/badge/iOS-13+-green)
+![macOS](https://img.shields.io/badge/macOS-10.15+-green)
+![tvOS](https://img.shields.io/badge/tvOS-13+-green)
+![watchOS](https://img.shields.io/badge/watchOS-6+-green)
+![visionOS](https://img.shields.io/badge/visionOS-1+-green)
+
 SwiftPagination is a simple and flexible Swift library for handling pagination with support for both numbered and keyset pagination. This library makes it easy to implement pagination in your iOS and macOS applications.
 
 ## Features
