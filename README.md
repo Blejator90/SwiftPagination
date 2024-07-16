@@ -25,7 +25,7 @@ Add SwiftPagination to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/blejator90/swift-pagination.git", from: "0.1.0")
+    .package(url: "https://github.com/blejator90/SwiftPagination.git", from: "0.1.0")
 ]
 ```
 
