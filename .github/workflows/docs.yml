@@ -1,0 +1,61 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+      # Step 1: Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Xcode
+      - name: Set up Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
+      # Step 3: Checkout gh-pages Branch for Deployment
+      - name: Checkout gh-pages Branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: docs-out
+
+      # Step 4: Build Documentation
+      - name: Generate Documentation
+        run: |
+          # Clean up existing documentation
+          rm -rf docs-out/main
+
+          # Generate documentation for the main branch
+          swift package \
+            --allow-writing-to-directory docs-out/main \
+            generate-documentation \
+            --target SwiftPagination \
+            --output-path docs-out/main \
+            --transform-for-static-hosting \
+            --hosting-base-path /SwiftPagination/main
+
+      # Step 5: Fix Permissions (macOS might have file permission issues)
+      - name: Fix Permissions
+        run: sudo chown -R $USER docs-out
+
+      # Step 6: Deploy Documentation to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.1.7
+        with:
+          branch: gh-pages
+          folder: docs-out
+          single-commit: true
