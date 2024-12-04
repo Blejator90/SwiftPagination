@@ -74,7 +74,7 @@ public final class Pagination<T> where T: Sendable {
     public private(set) var didReachEnd: Bool = false
 
     private var state: any PaginationState<T>
-    private var currentTask: Task<[T], Error>?
+    private var currentTask: Task<[T], any Error>?
 
     /// Initializes a `Pagination` instance for numbered pagination.
     ///

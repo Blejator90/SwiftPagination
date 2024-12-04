@@ -19,15 +19,12 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-concurrency-extras", from: "1.1.0"),
-        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0")
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3")
 
     ],
     targets: [
         .target(
-            name: "SwiftPagination",
-            swiftSettings: [
-                .unsafeFlags(["-strict-concurrency=complete"])
-            ]
+            name: "SwiftPagination"
         ),
         .testTarget(
             name: "SwiftPaginationTests",
@@ -38,3 +35,14 @@ let package = Package(
         )
     ]
 )
+
+#if compiler(>=6)
+for target in package.targets where target.type != .system && target.type != .test {
+    target.swiftSettings = target.swiftSettings ?? []
+    target.swiftSettings?.append(contentsOf: [
+        .enableExperimentalFeature("StrictConcurrency"),
+        .enableUpcomingFeature("ExistentialAny"),
+        .enableUpcomingFeature("InferSendableFromCaptures"),
+    ])
+}
+#endif
