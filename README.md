@@ -17,6 +17,12 @@ SwiftPagination is a simple and flexible Swift library for handling pagination w
 - Asynchronous loading of pages.
 - Handles state and error management.
 
+## Documentation
+
+You can find the full API documentation here:
+[SwiftPagination Documentation](https://blejator90.github.io/SwiftPagination/main/documentation/swiftpagination/)
+
+
 ## Installation
 
 ### Swift Package Manager
