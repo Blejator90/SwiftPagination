@@ -3,7 +3,7 @@
 /// This protocol provides the necessary methods to manage and update the state
 /// of pagination, including resetting the state, fetching items, and updating the state
 /// with new items.
-public protocol PaginationState<Item> {
+public protocol PaginationState<Item>: Sendable where Item: Sendable {
     /// The type of items being paginated.
     associatedtype Item
 

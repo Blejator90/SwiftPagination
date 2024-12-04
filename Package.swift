@@ -24,7 +24,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SwiftPagination"
+            name: "SwiftPagination",
+            swiftSettings: [
+                .unsafeFlags(["-strict-concurrency=complete"])
+            ]
         ),
         .testTarget(
             name: "SwiftPaginationTests",

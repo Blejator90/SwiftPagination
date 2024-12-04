@@ -2,6 +2,7 @@ import XCTest
 import ConcurrencyExtras
 @testable import SwiftPagination
 
+@MainActor
 final class KeysetPaginationTests: XCTestCase {
     struct MyItem: Decodable, Identifiable, PaginationKey {
         let id: Int

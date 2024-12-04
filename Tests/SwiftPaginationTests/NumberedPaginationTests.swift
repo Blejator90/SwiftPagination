@@ -2,6 +2,7 @@ import XCTest
 import ConcurrencyExtras
 @testable import SwiftPagination
 
+@MainActor
 final class NumberedPaginationTests: XCTestCase {
     
     struct MyItem: Decodable, Identifiable {

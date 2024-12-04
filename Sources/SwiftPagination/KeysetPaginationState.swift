@@ -4,7 +4,7 @@
 /// and the function to fetch items based on a key and page size.
 public struct KeysetPaginationState<T: PaginationKey>: PaginationState {
     var lastKey: String?
-    let fetchPage: (String?, Int) async throws -> [T]
+    let fetchPage: @Sendable (String?, Int) async throws -> [T]
 
     public func reset() -> KeysetPaginationState<T> {
         return KeysetPaginationState(lastKey: nil, fetchPage: fetchPage)
